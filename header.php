@@ -34,7 +34,11 @@ Find out more at SMALLWINS.CO.UK or shoot an email to HELLO@SMALLWINS.CO.UK
             <img src="<?php echo get_template_directory_uri() ?>/img/cross.svg"/>
           </a>
           <?php wp_nav_menu(array( 'theme_location' => 'main' )); ?>
-          <i class="fa fa-search"></i>
+          <i class="fa fa-search">
+          </i>
+          <section class="search-box">
+            <?php get_search_form(); ?>
+          </section>          
         </nav>
         <a class="bars" role="button">
           <img src="<?php echo get_template_directory_uri() ?>/img/bars.svg"/>

@@ -19,21 +19,20 @@ add_theme_support('post-thumbnails');
 // Register two menus
 register_nav_menus( array(
   'main' => 'Main',
-  'social' => 'Social',
   'footer' => 'Footer'
 ));
 
 // Register a widgetised area
-add_action('widgets_init', function() {
-  register_sidebar( array(
-      'name'          => __( 'Sidebar', 'smallwins' ),
-      'id'            => 'sidebar',
-      'before_widget' => '<section id="%1$s" class="widget %2$s">',
-      'after_widget'  => '</aside>',
-      'before_title'  => '<h3 class="widget-title">',
-      'after_title'   => '</h3>',
-  ) );
-});
+// add_action('widgets_init', function() {
+//   register_sidebar( array(
+//       'name'          => __( 'Sidebar', 'smallwins' ),
+//       'id'            => 'sidebar',
+//       'before_widget' => '<section id="%1$s" class="widget %2$s">',
+//       'after_widget'  => '</aside>',
+//       'before_title'  => '<h3 class="widget-title">',
+//       'after_title'   => '</h3>',
+//   ) );
+// });
 
 // Remove some unnecessary markup from nav menus
 add_filter( 'wp_nav_menu_args', function ( $args = '' ) {

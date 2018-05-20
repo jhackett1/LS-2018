@@ -57,6 +57,7 @@
     margin: 50px 20px
 
   .post-list
+    margin-top: 30px
     article.post
       background-color: white
       a
@@ -76,8 +77,11 @@
     img
       max-width: 230px
     nav
+      position: relative
       i.fa-search
         color: $light-grey
+        cursor: pointer
+
       a.close
         display: none
         visibility: hidden
@@ -186,13 +190,16 @@
     grid-template-columns: 2fr 1fr
     article
       background-color: white
-      margin-top: -80px
       z-index: 2
+      margin-top: 40px
+      &.with-image
+        margin-top: -80px
       h1.post-title
         font-size: 2.5em
       p
-        font-size: 1.1em
+        font-size: 1.05em
         line-height: 1.6em
+        margin-bottom: 22px
 
   .related-posts-container
     margin-bottom: 70px

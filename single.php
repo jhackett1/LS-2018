@@ -8,10 +8,18 @@ if (have_posts()):
     </section>
     <div class="side-body container">
       <main class="site-content single">
-        <article class="post post-single">
+        <article class="post post-single with-image">
           <h1 class="post-title"><?php the_title(); ?></h1>
           <span class="post-meta"><?php the_category(', '); echo " | " . human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></span>
           <?php the_content(); ?>
+          <hr/>
+          <section class="author-box">
+            <?php echo get_avatar(get_the_author_meta( 'ID' ), 70); ?>
+            <div>
+              <h3><?php the_author_posts_link(); ?></h3>
+              <p><small><?php echo get_the_author_meta( 'user_description'); ?></small></p>
+            </div>
+          </section>
         </article>
         <?php get_sidebar(); ?>
       </main>
