@@ -20,7 +20,7 @@ add_theme_support('post-thumbnails');
 register_nav_menus( array(
   'main' => 'Main',
   'social' => 'Social',
-  'corporate' => 'Corporate'
+  'footer' => 'Footer'
 ));
 
 // Register a widgetised area
@@ -91,3 +91,29 @@ add_filter( 'get_the_archive_title', function ($title) {
 
 // Remove style="width" from .wp-caption
 add_filter('img_caption_shortcode_width', '__return_false');
+
+// Track post views in a meta key
+function sw_set_post_views($postID) {
+    $count_key = 'sw_post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){
+        $count = 0;
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+    }else{
+        $count++;
+        update_post_meta($postID, $count_key, $count);
+    }
+}
+// Remove issues with prefetching adding extra views
+remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+
+function sw_track_post_views ($post_id) {
+    if ( !is_single() ) return;
+    if ( empty ( $post_id) ) {
+        global $post;
+        $post_id = $post->ID;
+    }
+    sw_set_post_views($post_id);
+}
+add_action( 'wp_head', 'sw_track_post_views');

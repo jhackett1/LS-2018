@@ -17,6 +17,10 @@ add_action('customize_register', function($wp_customize){
     'title' => __('Social Sharing', 'Small Wins'),
     'priority' => 30
   ));
+  $wp_customize->add_section('sw_footer', array(
+    'title' => __('Footer', 'Small Wins'),
+    'priority' => 30
+  ));
 
   // Settings
   $wp_customize->add_setting('sw_default_social_share_image', array(
@@ -52,7 +56,9 @@ add_action('customize_register', function($wp_customize){
   $wp_customize->add_setting('sw_grid_6_category', array(
     'transport' => 'refresh',
   ));
-
+  $wp_customize->add_setting('sw_footer_text', array(
+    'transport' => 'refresh',
+  ));
 
   // Controls
   $wp_customize->add_control(new WP_Customize_Image_Control( $wp_customize, 'sw_default_social_share_image', array(
@@ -142,5 +148,12 @@ add_action('customize_register', function($wp_customize){
         'type' => 'text',
     )
   );
-
+  $wp_customize->add_control(
+    'sw_footer_text',
+    array(
+        'label' => 'Text',
+        'section' => 'sw_footer',
+        'type' => 'textarea',
+    )
+  );
 });

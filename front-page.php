@@ -24,14 +24,21 @@
           ?>
           <article class="post-grid-item <?php if ($counter == 0) { echo 'post'; } else {echo 'trail'; } ?>">
             <a href="<?php the_permalink(); ?>">
-              <span class="post-date"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></span>
               <div class="image-holder">
                 <div class="featured-image" style="background-image:url('<?php echo get_the_post_thumbnail_url($post->ID, 'large') ?>')"></div>
               </div>
-              <h2 class="post-title"><?php the_title(); ?></h2>
-              <?php if ($counter == 0) { ?>
-                <p class="post-excerpt"><?php the_excerpt(); ?></p>
-              <?php } ?>
+              <div class="text-panel">
+                <?php if ($top && $counter == 0) { ?>
+                <span class="post-date">Top story</span>
+                <?php } else { ?>
+                <span class="post-date"><?php echo human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago'; ?></span>
+                <?php } ?>
+
+                <h2 class="post-title"><?php the_title(); ?></h2>
+                <?php if ($counter == 0) { ?>
+                  <p class="post-excerpt"><?php the_excerpt(); ?></p>
+                <?php } ?>
+              </div>
             </a>
           </article>
 
@@ -40,7 +47,7 @@
           wp_reset_postdata(); ?>
         </div>
         <?php if ($top === false) { ?>
-          <a href="<?php echo get_category_link( get_category_by_slug(get_theme_mod($category_slug))) ?>" class="more-stories">View more →</a>
+          <a href="<?php echo get_category_link( get_category_by_slug(get_theme_mod($category_slug))) ?>" class="more-stories">More <?php echo get_category_by_slug(get_theme_mod($category_slug))->name ?> →</a>
         <?php } ?>
       <?php endif;
     } ?>

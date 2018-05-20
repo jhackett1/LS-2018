@@ -7,6 +7,10 @@
   box-sizing: border-box
   font-family: $p-stack
 
+body
+  background: $white
+  padding-top: 82px
+
 h1, h2, h3, h4, h5
   font-family: $h-stack
   color: $black
@@ -20,6 +24,14 @@ h1, h2, h3, h4, h5
 
 // Header
 header.site-header
+  position: fixed
+  top: 0
+  width: 100%
+  z-index: 999
+
+  background-color: white
+  border-bottom: 1px solid #efefef
+
   .container
     display: flex
     flex-direction: row
@@ -39,8 +51,8 @@ header.site-header
 
 // index.php article list
 .archive-title
-  margin: 10px 20px 20px 20px
-  font-size: 2.5em
+  margin: 50px 20px 20px 20px
+  font-size: 2.6em
 
 .post-list
   margin: 0px 20px
@@ -65,10 +77,11 @@ article.post
   p
     color: $black
     line-height: 1.5em
+    font-size: 0.9em
   span.post-date
     display: block
     color: $light-grey
-    margin-bottom: 15px
+    margin-bottom: 10px
     @include LightText
 
 // Footer
@@ -94,11 +107,17 @@ footer.site-footer
           text-decoration: none
           &:hover
             text-decoration: underline
+  span.footer-info
+    display: inline-block
+    font-size: 0.8em
+    white-space: pre-line
+    max-width: 600px
+    margin: 0px auto 20px auto
   span.copyright-info
     display: block
     color: $white
     color: $light-grey
-    font-size: 0.9em
+    font-size: 0.8em
     a
       color: $white
 
@@ -108,7 +127,7 @@ section.post-pagination
   display: flex
   flex-direction: row
   align-items: center
-  justify-content: space-between
+  justify-content: center
   a
     @include Button
     @include LightText
@@ -160,6 +179,23 @@ article.post-single
       color: $light-grey
       text-align: right
 
+.popular-posts-list
+  margin-top: 20px
+  list-style-type: none
+  li
+    margin-bottom: 20px
+    &::after
+      content: ""
+      display: block
+      clear: both
+    a
+      text-decoration: none
+    img
+      float: left
+      max-width: 90px
+      max-height: 90px
+      margin-right: 10px
+
 @keyframes fadeIn
   from
     opacity: 0
@@ -169,7 +205,7 @@ article.post-single
 // 3:2 responsive image in holder
 .image-holder
   @include ResponsiveImageHolder
-  background-color: #f6f6f6
+  background-color: #efefef
   .featured-image
     animation: fadeIn 0.3s ease-in
     @include ResponsiveImage
@@ -177,9 +213,12 @@ article.post-single
 main.site-content.home:last-child
   margin-bottom: 40px
 
+aside.site-sidebar
+  padding: 25px
+
 .grid-title
-  font-size: 2.5em
-  margin: 70px 20px 20px 20px
+  font-size: 2.6em
+  margin: 50px 20px 20px 20px
 
 .more-stories
   @include LightText
@@ -215,11 +254,11 @@ main.site-content.home:last-child
       span.post-date
         color: $light-grey
         display: inline-block
-        margin-bottom: 15px
+        margin-bottom: 7px
     // Hide the fourth post
     &:nth-of-type(4)
       display: none
-      visibility: none
+      visibility: hidden
     span.post-date
       @include LightText
     a
@@ -230,7 +269,7 @@ section.call-to-action-bar
   margin-top: 70px
   text-align: center
   padding: 70px 0px
-  background-color: #f6f6f6
+  background-color: white
   @include BreakOut
   h2
     margin-bottom: 20px
@@ -242,6 +281,7 @@ section.call-to-action-bar
     border-radius: 4px
     border: none
     margin-right: 5px
+    background-color: $white
     font-size: 1em
     color: black
     margin-bottom: 20px
